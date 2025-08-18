@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 public class PrefabCleanerSuffix
 {
-    [MenuItem("Tools/Remove [-b, -z] and Rename -a")]
-    public static void CleanAndRenamePrefabs()
+    [MenuItem("Tools/Clean Prefabs (Suffix + Hyphen Rule)")]
+    public static void CleanPrefabs()
     {
         GameObject[] allPrefabs = Resources.LoadAll<GameObject>("- Prefabs_M");
         int deletedCount = 0;
@@ -20,7 +21,8 @@ public class PrefabCleanerSuffix
             string assetPath = AssetDatabase.GetAssetPath(prefab);
             if (string.IsNullOrEmpty(assetPath)) continue;
 
-            // Caso 1: Rinomina i prefab che terminano con "-a"
+            // --- Prima parte: PrefabCleanerSuffix ---
+            // Caso 1: rinomina quelli con "-a"
             if (prefabNameLower.EndsWith("-a"))
             {
                 string newName = prefabName.Substring(0, prefabName.Length - 2); // rimuove "-a"
@@ -29,10 +31,19 @@ public class PrefabCleanerSuffix
                 if (string.IsNullOrEmpty(result)) renamedCount++;
                 else Debug.LogWarning($"Errore nel rinominare {prefabName}: {result}");
             }
-            // Caso 2: Elimina i prefab che terminano con "-[b-z]"
+            // Caso 2: elimina quelli con "-[b-z]"
             else if (Regex.IsMatch(prefabNameLower, @"-[b-z]$"))
             {
-                Debug.Log($"Eliminando prefab: {prefabName} at {assetPath}");
+                Debug.Log($"Eliminando prefab (suffisso): {prefabName} at {assetPath}");
+                AssetDatabase.DeleteAsset(assetPath);
+                deletedCount++;
+                continue; // salta la parte sotto
+            }
+
+            int hyphenCount = prefabName.Count(c => c == '-');
+            if (hyphenCount >= 3)
+            {
+                Debug.Log($"Eliminando prefab (troppe '-'): {prefabName} at {assetPath}");
                 AssetDatabase.DeleteAsset(assetPath);
                 deletedCount++;
             }
