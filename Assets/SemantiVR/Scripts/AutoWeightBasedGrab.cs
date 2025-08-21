@@ -27,7 +27,6 @@ public class AutoWeightBasedGrab : MonoBehaviour
 
         grab.attachEaseInTime = Mathf.Lerp(minAttachTime, maxAttachTime, t);
         grab.movementType = XRGrabInteractable.MovementType.VelocityTracking;
-        grab.useDynamicAttach = true;
 
         // Damping proporzionale alla massa, con minimi garantiti
         rb.linearDamping = Mathf.Max(1f, mass);                // Linear damping minimo 1
