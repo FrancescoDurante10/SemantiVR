@@ -4,7 +4,7 @@
 Il progetto nasce come tesi triennale in Informatica (Università di Salerno, a.a. 2024–2025).
 
 <p align="center">
-  <img src="Assets/Screenshots/demo_scene.png" alt="Esempio di scenario SemantiVR" width="600"/>
+  <img src="Screenshots/demo_scene.png" alt="Esempio di scenario SemantiVR" width="600"/>
 </p>
 
 ---
@@ -80,7 +80,7 @@ Questo avvierà FastAPI e renderà disponibili gli endpoint che Unity usa per ca
 
 ## Demo screenshots 🖼️
 <p align="center">
-  <img src="Assets/Screenshots/example_logic.png" alt="Scenario logico (T-Rex + Stegosauro)" width="500"/>
+  <img src="Screenshots/example_logic.png" alt="Scenario logico (T-Rex + Stegosauro)" width="500"/>
 </p>
 
 ---
