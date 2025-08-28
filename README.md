@@ -114,6 +114,9 @@ Di seguito i pacchetti utilizzati, scaricabili dall’Asset Store:
 > ℹ️ **Nota**: in futuro è previsto lo sviluppo di **asset personalizzati**, così da evitare la necessità di importare pacchetti esterni.
 
 ### Frameworks & librerie
-- **XR Interaction Toolkit 3.0.8**  
-- **gensim**, **fastapi**, **uvicorn**  
+- [XR Interaction Toolkit 3.0.8](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html)  
+- [gensim](https://github.com/piskvorky/gensim)  
+- [fastapi](https://fastapi.tiangolo.com/)  
+- [uvicorn](https://www.uvicorn.org/)  
+ 
 ---
